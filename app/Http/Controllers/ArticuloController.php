@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticuloController extends Controller
 {
@@ -14,7 +15,9 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulos = Articulo::all();
+        // $preciomayor = DB::table('articulos')->max('precio');
+        // $articulos = DB::table('articulos')->select('id', 'codigo', 'descripcion', 'cantidad', 'precio')->where('precio', '=', $preciomayor)->get();
+        $articulos = DB::table('articulos')->select('id', 'codigo', 'descripcion', 'cantidad', 'precio')->get();
         return view('articulo.index')->with('articulos', $articulos);
     }
 
@@ -38,14 +41,22 @@ class ArticuloController extends Controller
     public function store(Request $request)
     {
         //
-        $articulos = new Articulo();
-        $articulos->codigo = $request->get('codigo');
-        $articulos->descripcion = $request->get('descripcion');
-        $articulos->cantidad = $request->get('cantidad');
-        $articulos->precio = $request->get('precio');
+        // $articulos = new Articulo();
+        // $articulos->codigo = $request->get('codigo');
+        // $articulos->descripcion = $request->get('descripcion');
+        // $articulos->cantidad = $request->get('cantidad');
+        // $articulos->precio = $request->get('precio');
 
-        $articulos->save();
 
+        //$articulos->save();
+
+        $codigo = $request->get('codigo');
+        $descripcion = $request->get('descripcion');
+        $cantidad = $request->get('cantidad');
+        $precio = $request->get('precio');
+
+        DB::insert('insert into articulos (codigo, descripcion, cantidad, precio) values(?, ?, ?, ?)', [$codigo, $descripcion, $cantidad, $precio ]);
+        
         return redirect('/articulos');
 
     }
@@ -84,14 +95,22 @@ class ArticuloController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $articulo = Articulo::find($id);
-        $articulo->codigo = $request->get('codigo');
-        $articulo->descripcion = $request->get('descripcion');
-        $articulo->cantidad = $request->get('cantidad');
-        $articulo->precio = $request->get('precio');
+        // $articulo = Articulo::find($id);
+        // $articulo->codigo = $request->get('codigo');
+        // $articulo->descripcion = $request->get('descripcion');
+        // $articulo->cantidad = $request->get('cantidad');
+        // $articulo->precio = $request->get('precio');
 
-        $articulo->save();
+        // $articulo->save();
 
+        // $codigo = $request->get('codigo');
+        // $descripcion = $request->get('descripcion');
+        // $cantidad = $request->get('cantidad');
+        // $precio = $request->get('precio');
+        // $fecha = date("y.m.d");
+        // DB::update('update articulos set codigo = ?, descripcion = ?, cantidad = ?, precio = ? where id = ?', [$codigo, $descripcion, $cantidad, $precio, $id ]);
+
+        DB::table('articulos')->where('id', $id)->decrement('cantidad', 1);
         return redirect('/articulos');
 
     }

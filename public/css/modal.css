@@ -1,0 +1,37 @@
+/* Modal */
+.modal {
+    display: none; /* ocultar predeterminado */
+    position: fixed; /* permanecer fija */
+    z-index: 1; /* traer al frente */
+    left: 0;
+    top: 0;
+    width: 100%; /* ancho maximo */
+    height: 100%; /* altura maxima */
+    overflow: auto; /* habilitar scroll por si es necesario */
+    background-color: rgb(0,0,0); /* color de fondo */
+    background-color: rgba(0,0,0,0.4); /* opacidad */
+  }
+  
+  /* contenido del modal */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% margin auto */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* dependiendo del tam de pantalla */
+  }
+  
+  /* boton cerrar */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

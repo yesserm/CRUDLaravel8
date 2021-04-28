@@ -1,7 +1,7 @@
 @extends('layouts.plantillabase')
 
 @section('contenido')
-<h1>CREAR REGISTROS</h1>
+<h1>EDITAR REGISTROS</h1>
 <form action="/articulos/{{ $articulo->id }}" method="post">
     @csrf
     @method('PUT')

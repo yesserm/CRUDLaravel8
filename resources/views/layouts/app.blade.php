@@ -12,6 +12,8 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/modal.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/estilo.css') }}">
 
         @livewireStyles
 
