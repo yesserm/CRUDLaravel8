@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\PacienteController;
+use App\Http\Controllers\API\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('pacientes', [PacienteController::class, 'index']);
+Route::post('pacientes', [PacienteController::class, 'store']);
+Route::get('pacientes/{paciente}', [PacienteController::class, 'show']);
+
+Route::get('proveedores', [ProveedorController::class, 'index']);
+Route::post('proveedores', [ProveedorController::class, 'store']);
