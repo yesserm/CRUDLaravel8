@@ -24,6 +24,7 @@ Route::get('pacientes', [PacienteController::class, 'index']);
 Route::post('pacientes', [PacienteController::class, 'store']);
 Route::get('pacientes/{paciente}', [PacienteController::class, 'show']);
 Route::put('pacientes/{paciente}', [PacienteController::class, 'update']);
+Route::delete('pacientes/{paciente}', [PacienteController::class, 'destroy']);
 
 Route::get('proveedores', [ProveedorController::class, 'index']);
 Route::post('proveedores', [ProveedorController::class, 'store']);
